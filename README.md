@@ -41,8 +41,8 @@ Now create a separate build directory. In this example, I create the directory `
 Next switch to the build directory, execute `cmake` to create the build script. Build the executable with `make` and install the executable in your system with `sudo make install`.
 
 ```
-cd build_read_sht31
-cmake ../read_sht31
+mkdir -p build_read_sht31 && cd build_read_sht31
+cmake ..
 make
 sudo make install
 ```
