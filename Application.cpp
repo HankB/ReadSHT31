@@ -104,7 +104,8 @@ namespace lr
             }
             // Output the values as JSON
             const auto [temperature, humidity] = readResult.getValue();
-            std::cout << "{ \"temperature_celsius\": " << temperature << ", \"relative_humidity\": " << humidity << " }" << std::endl;
+            std::cout << "{\"t\":" << time(0) << ", \"temp\":"<< temperature/5.0*9.0+32.0 << ", \"humid\": " << humidity 
+            << ", \"device\":\"SHT31\" }" << std::flush;
         }
         else if (_action == Action::ReadStatus)
         {
