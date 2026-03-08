@@ -34,4 +34,4 @@
 # Ignore build environment.
 cmake-build-*
 .idea/
-build_read_sht31/
+build/
