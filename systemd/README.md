@@ -5,9 +5,10 @@
 
 ```bash
 # Install as a user unit (recommended):
+cd systemd
 mkdir -p ~/.config/systemd/user
-cp systemd/sht31.service ~/.config/systemd/user/
-cp systemd/sht31.timer ~/.config/systemd/user/
+cp sht31.service ~/.config/systemd/user/
+cp sht31.timer ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable --now sht31.timer
 systemctl --user status sht31.timer
