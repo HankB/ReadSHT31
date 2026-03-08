@@ -10,7 +10,7 @@ Environment=BROKER=mqtt
 Environment=PORT=1883
 Environment=TOPIC="HA/%l/roamer/temp_humidity_press"
 ExecStartPre=/bin/sh -c 'nc -z -w5 "${BROKER}" "${PORT}" || exit 1'
-ExecStart=/bin/sh -c './sht31 2>>/tmp/sht31.err| \
+ExecStart=/bin/sh -c './read_sht31 2>>/tmp/read_sht31.err| \
     mosquitto_pub -h "${BROKER}" -p "${PORT}" -t "${TOPIC}" -l'
 
 [Install]
