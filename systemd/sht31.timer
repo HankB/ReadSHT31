@@ -1,10 +1,10 @@
 
 [Unit]
-Description=Run bme280 every minute (user timer)
+Description=Run read_sht31 every minute (user timer)
 
 [Timer]
 OnCalendar=*-*-* *:*:00
-Unit=bme280.service
+Unit=sht31.service
 Persistent=true
 
 [Install]
