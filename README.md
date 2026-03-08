@@ -20,28 +20,38 @@ Usage: read_sht31 [arguments]
 If you call the command, you will get JSON output:
 
 ```
-$ read_sht32
-{ "temperature_celsius": 24.8, "relative_humidity": 28.4 }
+hbarta@bennu:~ $ read_sht31
+{ "t":1772945400,"temp":69.8, "humid": 45.7, "device":"SHT31" }hbarta@bennu:~ $ 
+hbarta@bennu:~ $ 
 ```
 
-The idea is to call this command from your script and parse the returned JSON output.
+## Check for SHT31
 
-## How to Compile and Install
+```text
+hbarta@bennu:~ $ i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- 44 -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+hbarta@bennu:~ $ 
+```
 
-In order to compile and install the tool on your Raspberry-Pi, you need to install the compiler, CMake and the I2C-Tools first:
+## Requirements
 
 ```
 sudo apt install gcc cmake i2c-tools
+sudo raspi-config nonint do_i2c 0
 ```
 
-Download the files of this git repository to a sub directory in your home directory. In this example, I downloaded the files to the directory `/home/pi/read_sht31`.
-
-Now create a separate build directory. In this example, I create the directory `/home/pi/build_read_sht31`.
-
-Next switch to the build directory, execute `cmake` to create the build script. Build the executable with `make` and install the executable in your system with `sudo make install`.
+## Build
 
 ```
-mkdir -p build_read_sht31 && cd build_read_sht31
+mkdir -p build && cd build
 cmake ..
 make
 sudo make install
